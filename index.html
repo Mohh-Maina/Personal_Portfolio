@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal portfolio of Maureen Maina, an IT student and aspiring web developer.">
+    <title>Maureen Maina | Web Developer & IT Student</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #7c3aed;
+            --secondary: #a855f7;
+            --dark: #111827;
+            --text: #374151;
+            --light: #f9fafb;
+            --white: #ffffff;
+            --gray: #6b7280;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--white);
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            padding: 140px 25px 80px;
+            background: linear-gradient(135deg, #f5f3ff, #ffffff);
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            width: 100%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text .intro {
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            line-height: 1.05;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 1.15rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #6d28d9;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .profile-card {
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+            font-weight: bold;
+            box-shadow: 0 20px 50px rgba(124, 58, 237, 0.3);
+        }
+
+        /* General sections */
+        section {
+            padding: 90px 25px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.3rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+        }
+
+        /* About */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+
+        .info-box {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .info-box p {
+            margin-bottom: 12px;
+        }
+
+        .info-box strong {
+            color: var(--dark);
+        }
+
+        /* Skills */
+        .skills {
+            background: #f9fafb;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .skill h3 {
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .skill p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+            background: white;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            height: 180px;
+            background: linear-gradient(135deg, #7c3aed, #c084fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #ede9fe;
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Education */
+        .education {
+            background: #f9fafb;
+        }
+
+        .education-card {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .education-card h3 {
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .education-card .date {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--dark);
+            color: white;
+        }
+
+        .contact .section-title h2 {
+            color: white;
+        }
+
+        .contact .section-title p {
+            color: #d1d5db;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 25px;
+            background: #1f2937;
+            border-radius: 12px;
+        }
+
+        .contact-card .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .contact-card a {
+            color: #c4b5fd;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #0b1120;
+            color: #9ca3af;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                padding: 25px;
+                display: none;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-content,
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card {
+                width: 230px;
+                height: 230px;
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            section {
+                padding: 70px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">Maureen.</div>
+
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+
+                <div class="hero-text">
+                    <p class="intro">Hello, I'm</p>
+
+                    <h1>
+                        Maureen <span>Maina</span>
+                    </h1>
+
+                    <p>
+                        An IT student and aspiring web developer passionate about
+                        creating modern, responsive and user-friendly websites.
+                    </p>
+
+                    <div class="buttons">
+                        <a href="#projects" class="btn btn-primary">
+                            View My Work
+                        </a>
+
+                        <a href="#contact" class="btn btn-outline">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    MM
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="about" id="about">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>About Me</h2>
+                    <p>Get to know me</p>
+                </div>
+
+                <div class="about-grid">
+
+                    <div class="about-text">
+                        <h3>I'm Maureen, an aspiring Web Developer.</h3>
+
+                        <p>
+                            I am an Information Technology student with a strong
+                            interest in web development and technology. I enjoy
+                            learning how websites work and turning ideas into
+                            functional digital experiences.
+                        </p>
+
+                        <p>
+                            My goal is to continue developing my technical skills,
+                            gain practical experience and become a professional
+                            full-stack web developer.
+                        </p>
+
+                        <p>
+                            When I'm not coding, I enjoy learning new technologies,
+                            solving problems and exploring creative ideas.
+                        </p>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>Name:</strong> Maureen Maina</p>
+                        <p><strong>Field:</strong> Information Technology</p>
+                        <p><strong>Specialization:</strong> Web Development</p>
+                        <p><strong>Experience:</strong> Student / Beginner Developer</p>
+                        <p><strong>Location:</strong> Kenya</p>
+                        <p><strong>Status:</strong> Available for learning opportunities</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="skills" id="skills">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>My Skills</h2>
+                    <p>Technologies I'm learning and working with</p>
+                </div>
+
+                <div class="skills-grid">
+
+                    <div class="skill">
+                        <div class="icon">🌐</div>
+                        <h3>HTML</h3>
+                        <p>Building structured and accessible web pages.</p>
+                    </div>
+
+                    <div class="skill">
+                        <div class="icon">🎨</div>
+                        <h3>CSS</h3>
+                        <p>Creating responsive and attractive web designs.</p>
+                    </div>
+
+                    <div class="skill">
+                        <div class="icon">⚡</div>
+                        <h3>JavaScript</h3>
+                        <p>Adding functionality and interactivity to websites.</p>
+                    </div>
+
+                    <div class="skill">
+                        <div class="icon">💻</div>
+                        <h3>IT Skills</h3>
+                        <p>Problem solving, computer systems and technology.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>My Projects</h2>
+                    <p>A few examples of projects I am working on</p>
+                </div>
+
+                <div class="projects-grid">
+
+                    <article class="project">
+                        <div class="project-image">🌐</div>
+
+                        <div class="project-content">
+                            <h3>Personal Portfolio</h3>
+
+                            <p>
+                                A responsive personal portfolio website showcasing
+                                my skills, education and projects.
+                            </p>
+
+                            <div class="tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-image">🛒</div>
+
+                        <div class="project-content">
+                            <h3>Online Shop</h3>
+
+                            <p>
+                                A simple e-commerce website concept designed to
+                                display products and provide a user-friendly
+                                shopping experience.
+                            </p>
+
+                            <div class="tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-image">📱</div>
+
+                        <div class="project-content">
+                            <h3>Responsive Website</h3>
+
+                            <p>
+                                A mobile-friendly website designed to work smoothly
+                                across phones, tablets and desktop computers.
+                            </p>
+
+                            <div class="tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">Responsive Design</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="education" id="education">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Education</h2>
+                    <p>My academic journey</p>
+                </div>
+
+                <div class="education-card">
+                    <h3>Information Technology</h3>
+                    <p class="date">Currently Studying</p>
+
+                    <p>
+                        I am currently pursuing my studies in Information Technology,
+                        where I am building knowledge in programming, web development,
+                        databases, computer systems and other areas of technology.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact" id="contact">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Let's Connect</h2>
+                    <p>
+                        I'm open to learning opportunities, collaborations and
+                        interesting web development projects.
+                    </p>
+                </div>
+
+                <div class="contact-grid">
+
+                    <div class="contact-card">
+                        <div class="icon">📧</div>
+                        <h3>Email</h3>
+                        <a href="mailto:your.email@example.com">
+                            your.email@example.com
+                        </a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="icon">📱</div>
+                        <h3>Phone</h3>
+                        <a href="tel:+254700000000">
+                            +254 700 000 000
+                        </a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="icon">💼</div>
+                        <h3>LinkedIn</h3>
+                        <a href="#" target="_blank">
+                            LinkedIn Profile
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            &copy; 2026 Maureen Maina. All Rights Reserved.
+        </p>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const navLinks = document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+        // Close mobile menu after clicking a link
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+            });
+        });
+    </script>
+
+</body>
+</html>
